@@ -65,6 +65,7 @@ public class NOBCModel {
       for (int i = 0; i < numOfSkills; i++)
       {
     	  PrintBuffer += "('" + myDOD_EDI_PI + "',";
+    	  PrintBuffer += "'NOBC',";
           PrintBuffer += SkillCodes[i] + ",";
           PrintBuffer += MonthsHeld[i] + ")";
           PrintBuffer += "\n";

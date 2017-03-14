@@ -71,8 +71,9 @@ public class NECModel {
       for (int i = 0; i < numOfSkills; i++)
       {
     	  PrintBuffer += "('" + myDOD_EDI_PI + "',";
+    	  PrintBuffer += "'NEC',";
           PrintBuffer += "" + SkillCodes[i] + ",";
-          PrintBuffer += "'" + DateAwarded[i] + ")\n";
+          PrintBuffer += "'" + DateAwarded[i] + "')\n";
       } 
       return PrintBuffer;
   }

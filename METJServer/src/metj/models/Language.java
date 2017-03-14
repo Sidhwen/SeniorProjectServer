@@ -72,7 +72,7 @@ public class Language {
             //extract various codes and test date from the ResultSet
             //*********************
             LangCode = Rs.getString(1);
-            LangCode = "'" + LangCode + "'";
+
 
             ProficiencyListenCode = Rs.getInt(2);
             ProficiencyReadCode = Rs.getInt(3);
@@ -90,7 +90,7 @@ public class Language {
 
         public String print()
         {
-            String PrintBuffer = "1\n";
+        	String PrintBuffer = "";
             PrintBuffer += "'" + LangCode + "',";
             PrintBuffer += ProficiencyListenCode + ",";
             PrintBuffer += ProficiencyReadCode + ",";

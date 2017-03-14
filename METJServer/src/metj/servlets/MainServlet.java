@@ -37,7 +37,6 @@ public class MainServlet extends HttpServlet {
         String myDOD_EDI_PI = request.getParameter("DOD_EDI_PI");
         String myPass = request.getParameter("Pass");
         try {
-        out.println("Connection Successful ... \n");
         
         DataProcessor myProcessor = new DataProcessor(myDOD_EDI_PI, myPass, Conn);
         

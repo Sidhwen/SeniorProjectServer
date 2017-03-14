@@ -66,7 +66,7 @@ public class DataProcessor {
 		String OutputString = "";
 		OutputString += myASVABModel.print();
 		OutputString += myAwardsModel.print();
-		OutputString += "(" + myDOD_EDI_PI + ",";
+		OutputString += "1\n(" + myDOD_EDI_PI + ",";
 		for (int i = 0; i < 5; i++)
 		{
 			OutputString += myLanguage[i].print();

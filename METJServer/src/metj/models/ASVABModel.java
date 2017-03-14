@@ -26,7 +26,7 @@ public class ASVABModel {
   public ASVABModel(String DOD_EDI_PI, Connection MyConn) throws SQLException {
 
 	  myDOD_EDI_PI = DOD_EDI_PI;
-      String[] QueryColumns = new String[16];
+      String[] QueryColumns = new String[17];
       
       Conn = MyConn;
       Stmt = Conn.createStatement();
@@ -47,20 +47,22 @@ public class ASVABModel {
       QueryColumns[11] = "MC_SCORE";
       QueryColumns[12] = "EI_SCORE";
       QueryColumns[13] = "VE_SCORE";
-      QueryColumns[14] = "AI_SCORE";
-      QueryColumns[15] = "NFQT_SCORE";
+      QueryColumns[14] = "AO_SCORE";
+      QueryColumns[15] = "AI_SCORE";
+      QueryColumns[16] = "NFQT_SCORE";
       String CompiledQuerys = "";
       
-      for (int i = 0; i < 15; i++)
+      for (int i = 0; i < 17; i++)
       {
     	  CompiledQuerys += QueryColumns[i];
-    	  if (i != 14)
+    	  if (i != 16)
     	  {
     		  CompiledQuerys += ",";
     	  }
       }
 
 
+      System.out.println(CompiledQuerys);
       //query function arguments described below
       //query(String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy)
 
@@ -84,7 +86,7 @@ public class ASVABModel {
 
       TestDates = new String[numOfTests];
       TestIDs = new String[numOfTests];
-      Scores = new String[numOfTests][14];
+      Scores = new String[numOfTests][15];
 
 
 
@@ -95,7 +97,7 @@ public class ASVABModel {
 
           TestDates[i] = Rs.getString(1);
           TestIDs[i] = Rs.getString(2);
-          for (int j = 0; j < 13; j++)
+          for (int j = 0; j < 15; j++)
           {
               ScoreBuffer = Rs.getInt(3 + j);
               if (ScoreBuffer == 0)
@@ -121,11 +123,11 @@ public class ASVABModel {
       {
           PrintBuffer += "('" + myDOD_EDI_PI + "',";
           PrintBuffer += "'" + TestDates[i] + "',";
-          PrintBuffer += "'" + TestIDs[i] + ",'";
-          for (int j = 0; j < 14; j++)
+          PrintBuffer += "'" + TestIDs[i] + "',";
+          for (int j = 0; j < 15; j++)
           {
         	  PrintBuffer += "'" + Scores[i][j] + "'";
-        	  if (j != 13) { PrintBuffer += ","; }
+        	  if (j != 14) { PrintBuffer += ","; }
           }
 
           PrintBuffer += ")\n";

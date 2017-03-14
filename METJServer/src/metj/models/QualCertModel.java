@@ -27,6 +27,7 @@ public class QualCertModel {
 
       Conn = MyConn;
       Stmt = Conn.createStatement();
+      myDOD_EDI_PI = DOD_EDI_PI;
       
       Rs = Stmt.executeQuery("SELECT COUNT(*) FROM PERS_QUAL WHERE DOD_EDI_PI = '" + DOD_EDI_PI + "'");
 
