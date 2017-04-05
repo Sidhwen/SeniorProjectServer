@@ -18,6 +18,7 @@ public class DataProcessor {
 	NOBCModel myNOBCModel;
 	QualCertModel myQualCertModel;
 	TrainingModel myTrainingModel;
+	AdminModel myAdminModel;
 	
 	public DataProcessor (String DOD_EDI_PI, String Password, Connection MyConn) throws SQLException
 	{
@@ -39,6 +40,7 @@ public class DataProcessor {
 			myNOBCModel = new NOBCModel(myDOD_EDI_PI, Conn);
 			myQualCertModel = new QualCertModel(myDOD_EDI_PI, Conn);
 			myTrainingModel = new TrainingModel(myDOD_EDI_PI, Conn);
+			myAdminModel = new AdminModel(myDOD_EDI_PI, Conn);
 		}
 
 		}
@@ -63,7 +65,10 @@ public class DataProcessor {
 	// construct the ends of INSERT INTO Sql statements to send over to the client, delimited with new lines.
 	public String print()
 	{
+		if (LoginSuccess)
+		{
 		String OutputString = "";
+		OutputString += myAdminModel.print();
 		OutputString += myASVABModel.print();
 		OutputString += myAwardsModel.print();
 		OutputString += "1\n(" + myDOD_EDI_PI + ",";
@@ -80,6 +85,11 @@ public class DataProcessor {
 		OutputString += myQualCertModel.print();
 		OutputString += myTrainingModel.print();
 		return OutputString;
+		}
+		else
+		{
+		return "Invalid Username/Pass";
+		}
 	}
 	}
 	

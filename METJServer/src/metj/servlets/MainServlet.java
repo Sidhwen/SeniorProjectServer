@@ -36,6 +36,8 @@ public class MainServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         String myDOD_EDI_PI = request.getParameter("DOD_EDI_PI");
         String myPass = request.getParameter("Pass");
+       // if (!myDOD_EDI_PI.contains("'") && !myPass.contains("'"))
+      //  {
         try {
         
         DataProcessor myProcessor = new DataProcessor(myDOD_EDI_PI, myPass, Conn);
@@ -47,6 +49,7 @@ public class MainServlet extends HttpServlet {
         	out.println( e.getErrorCode());
         	out.println(e.getSQLState());
         }
+   //     }
 	}
 
 	/**
